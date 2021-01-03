@@ -63,27 +63,27 @@ This problem is a modified version of [Bin Packing Problem](https://en.wikipedia
 
 ### Steps
 
-- Clone the repository and cd into it.
+1) Clone the repository and cd into it.
 
-- Setup and activate a virtualenv for the project.
+2) Setup and activate a virtualenv for the project.
 ```
 $ python3 -m venv myenv
 $ source myenv/bin/activate
 ```
 
-- Install required packages
+3) Install required packages
 ```
 $ pip3 install -r requirements.txt
 ```
 
-- You are all setup now.
+4) You are all setup now.
 
-- To run our pytests
+5) To run our pytests
 ```
 $ python3 -m pytest -v
 ```
 
-- To start the server
+6) To start the server
 ```
 $ python3 app.py
 ```
