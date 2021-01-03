@@ -35,6 +35,45 @@ Database tables creation and data insertion queries are available in [db directo
 - Bikes and Scooters are not available in the (19-23) slot.
 - 100kg max weight per slot
 
+
+## Database Structure
+
+![DB tables](https://github.com/tanushree27/Grofers_app/blob/main/extras/db_img.png?raw=true)
+
+### vehicle_table
+
+This table stores data about different type of vehicles along with its capacity.
+Eg: 
+```
+id      type        capacity
+1       Bike        30
+```
+
+### slot_table
+Stores details about types of slots
+Eg:
+```
+id      type
+1       6-9
+2       9-13
+```
+
+### delivery_partner_table
+Stores details about delivery partner and his/her vehicle type.
+```
+id      vehicle_type_id (foreign key from vehicle_table)
+1       1
+2       1
+```
+
+### vehicle_slot_table
+Stores details about vehicle type and slots that maps to status, to tell us if a vehicle is available on that slot.
+```
+id      vehicle_type_id     slot_id     status
+1       1                   1           1
+2       3                   1           0
+```    
+
 ## Algorithm
 
 This problem is a modified version of [Bin Packing Problem](https://en.wikipedia.org/wiki/Bin_packing_problem), our problem modifies the constraint of fixed bin size to variable sized bin, rest all is the same. This problem is a well known NP-Hard problem with no polynomial time solution.
