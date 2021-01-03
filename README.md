@@ -35,7 +35,7 @@ Database tables creation and data insertion queries are available in [db directo
 - Bikes and Scooters are not available in the (19-23) slot.
 - 100kg max weight per slot
 
-### Algorithm
+## Algorithm
 
 This problem is a modified version of [Bin Packing Problem](https://en.wikipedia.org/wiki/Bin_packing_problem), our problem modifies the constraint of fixed bin size to variable sized bin, rest all is the same. This problem is a well known NP-Hard problem with no polynomial time solution.
 
