@@ -4,40 +4,20 @@ import json
 from flask import Flask  
 from flask import request, jsonify
 import sqlite3
+from best_fit import bestFitDecreasing
 
 app = Flask(__name__) # name for the Flask app (refer to output)
 
-
+# Create some test data for our catalog in the form of a list of dictionaries.
 conn = sqlite3.connect('database.db', check_same_thread=False)
 print ("Opened database successfully")
-
-# Create some test data for our catalog in the form of a list of dictionaries.
-
-
-order = '''
-{
-    'slot_number' : 1,
-    'order_list' : [
-        {
-    ​       'order_id':​ ​1​, 
-        ​   "order_weight':​ ​30
-        }, 
-        {
-    ​       "order_id":​ ​2​,
-    ​       "order_weight":​ ​10 
-        },
-        {
-    ​       "order_id":​ ​3​,
-        ​   "order_weight":​ ​20    
-        } 
-    ]
-}
-'''
 
 # A route to return all of the available entries in our catalog.
 @app.route('/api/v1/delivery/assign', methods=['GET'])
 def deliveryAssign():
     content = request.json
+    # conn = sqlite3.connect('database.db', check_same_thread=False)
+    # print ("Opened database successfully")
 
     cur = conn.cursor()
     sql_q = '''
@@ -58,25 +38,14 @@ def deliveryAssign():
     '''
     cur.execute(sql_q, (content['slot_number'],))
 
-    rows = cur.fetchall()
+    available_delivery_partners = cur.fetchall()
 
-    delivery_map = dict()
-
-    for row in rows:
-        delivery_map[row[0]] = {
-            "capacity_left" : row[1],
-            "vehicle_type" : row[2],
-            "delivery_partner_id" : row[0],
-            "list_order_ids_assigned" : []
-        }
-
-    customSolveHardCoded(content['slot_number'], content['order_list'], delivery_map)
-
-    for key, value in delivery_map.items():
-        if len(value['list_order_ids_assigned']) == 0:
-            del delivery_map[key]
+    result = bestFitDecreasing (content['order_list'], available_delivery_partners)
+    #customSolveHardCoded(content['slot_number'], content['order_list'], delivery_map)
+    
+   
             
-    return jsonify(list(delivery_map.values()))
+    return jsonify(result)
 
 
 
@@ -108,5 +77,5 @@ if __name__ == "__main__":
 
 # curl --header "Content-Type: application/json" \
 #   --request GET \
-#   --data '{"slot_number": 1, "order_list" : [{"order_id": 1, "order_weight": 10},{"order_id": 2, "order_weight": 20},{"order_id": 3, "order_weight": 30}]}' \
+#   --data '{"slot_number": 1, "order_list" : [{"order_id": 1, "order_weight": 10},{"order_id": 2, "order_weight": 40},{"order_id": 3, "order_weight": 10},{"order_id": 4, "order_weight": 20}]}' \
 #   http://localhost:5000/api/v1/delivery/assign
