@@ -2,6 +2,10 @@
 
 This repository contains a Flask REST-API backend application, that aims to solve the [problem statement](https://github.com/tanushree27/Grofers_app/blob/main/Grofers%20-%20Problem%20Statement.pdf).
 
+
+
+
+
 ## Summary
 
 The application exposes a REST-API that takes in list of orders and slot number and returns the assigned delivery details that utilizes the vehicle space efficiently.
@@ -47,7 +51,9 @@ This problem is a modified version of [Bin Packing Problem](https://en.wikipedia
 
 *best fit = min(capacity_left - order_weight)
 
----
+
+
+
 ## Getting started
 
 ### Prerequisites
@@ -84,7 +90,9 @@ $ python3 app.py
 
 Your server should be up and running on localhost:5000
 
----
+
+
+
 ## APIs
 
 Here we outline the usage of our API
