@@ -1,0 +1,32 @@
+{
+    "name": "Slot 4 Test",
+    "input" : {
+        "slot_number" : 4,
+        "order_list" : [
+            {
+                "order_id":1,
+                "order_weight":30
+            }, 
+            {
+                "order_id":2,
+                "order_weight":10
+            },
+            {
+                "order_id":3,
+                "order_weight":20    
+            }
+        ]
+    },
+    "expected_output" : [
+        {
+            "capacity_left": 40, 
+            "delivery_partner_id": 6, 
+            "list_order_ids_assigned": [
+                    1,
+                    2,
+                    3
+            ], 
+            "vehicle_type": "Truck"
+        }
+    ]
+}
