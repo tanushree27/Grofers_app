@@ -2,42 +2,42 @@
 
 This repository contains a Flask REST-API backend application, that aims to solve the [problem statement](https://github.com/tanushree27/Grofers_app/blob/main/Grofers%20-%20Problem%20Statement.pdf).
 
-### Summary
+## Summary
 
 The application exposes a REST-API that takes in list of orders and slot number and returns the assigned delivery details that utilizes the vehicle space efficiently.
 
 Database tables creation and data insertion queries are available in [db directory](https://github.com/tanushree27/Grofers_app/tree/main/db).
 
-#### Constraits
+### Constraits
 
-Vehicle Capacity:
+**Vehicle Capacity:**
 - Bike : 30kg
 - Scooter : 50kg
 - Truck : 100kg
 
-Slots:
+**Slots:**
 - 6 - 9
 - 9 - 13
 - 16 - 19
 - 19 - 23
 
-Available Vehicles:
+**Available Vehicles:**
 - 1 Truck
 - 3 Bikes
 - 2 Scooters
 
-Note:
+**Note:**
 - Trucks are not available in the (6 - 9) slot.
 - Bikes and Scooters are not available in the (19-23) slot.
 - 100kg max weight per slot
 
-#### Algorithm
+### Algorithm
 
 This problem is a modified version of [Bin Packing Problem](https://en.wikipedia.org/wiki/Bin_packing_problem), our problem modifies the constraint of fixed bin size to variable sized bin, rest all is the same. This problem is a well known NP-Hard problem with no polynomial time solution.
 
 **Approach:** To tacke this problem I am going to use approximation algorithm called _"Best Fit Decreasing"_.
 
-Steps:
+**Steps:**
 1) Sort the orders by weights in decreasing order.
 2) Get the first/next order from the list.
 3) Search the assigned delivery partners list for _best fit_*. 
@@ -47,15 +47,15 @@ Steps:
 
 *best fit = min(capacity_left - order_weight)
 
+---
+## Getting started
 
-### Getting started
-
-#### Prerequisites
+### Prerequisites
 
 - python3
 - pip
 
-#### Steps
+### Steps
 
 - Clone the repository and cd into it.
 
@@ -84,11 +84,11 @@ $ python3 app.py
 
 Your server should be up and running on localhost:5000
 
-
-### APIs
+---
+## APIs
 
 Here we outline the usage of our API
-#### Input
+### Input
 
 ###### URL: GET http://localhost:5000/api/v1/delivery/assign
 
@@ -132,6 +132,22 @@ curl \
 ```
 
 
+### Output
+
+```
+[
+    {
+        "capacity_left": 40, 
+        "delivery_partner_id": 6, 
+        "list_order_ids_assigned": [
+                1,
+                2,
+                3
+        ], 
+        "vehicle_type": "Truck"
+    }
+]
+```
 
 ---
 By Tanushree Tumane
