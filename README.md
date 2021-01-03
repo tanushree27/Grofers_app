@@ -2,9 +2,12 @@
 
 This repository contains a Flask REST-API backend application, that aims to solve the [problem statement](https://github.com/tanushree27/Grofers_app/blob/main/Grofers%20-%20Problem%20Statement.pdf).
 
+## Heroku
+The service is up and running on Heroku for you to try out.
 
+**URL:** https://mighty-lowlands-88286.herokuapp.com/api/v1/delivery/assign
 
-
+Please refer to [API documentation](https://github.com/tanushree27/Grofers_app#apis) for usage.
 
 ## Summary
 
