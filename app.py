@@ -50,26 +50,6 @@ def deliveryAssign():
 
 
 
-def customSolveHardCoded (slot_number, list_of_orders, delivery_map):
-    total_weight = 0.00
-    for var in list_of_orders:
-        total_weight += var['order_weight']
-
-    print(total_weight)
-
-    if slot_number == 4:
-        for order in list_of_orders:
-            addList(delivery_map, delivery_map[6], order)
-
-        return
-    
-    print(json.dumps(delivery_map, indent=4, sort_keys=True))
-
-    return
-
-
-
-
 if __name__ == "__main__":
     app.run(debug = True) 
 
